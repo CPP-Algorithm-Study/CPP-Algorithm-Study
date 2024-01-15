@@ -1,0 +1,39 @@
+// The API isBadVersion is defined for you.
+// bool isBadVersion(int version);
+
+// input : n=5 
+// output : 4 
+
+// binary search -> O(logn)
+
+class Solution {
+public:
+    int firstBadVersion(int n) {
+        
+        int left = 1;
+        int right = n;
+
+        while(left<right)
+        {
+            int mid = left + (right-left)/2;
+            // int mid = (left+right)/2; -> runtime error 발생 (overflow)
+            
+            // if mid == bad version 
+            if (isBadVersion(mid))
+            {
+                // then, first bad version -> left&mid 사이 or mid 
+                right = mid; 
+            }
+
+            // if mid != bad version
+            else
+            {
+                // then, first bad version -> left+1&right 사이 
+                left = mid+1;
+            }
+        }
+
+        // left == right
+        return left;
+    }
+};
