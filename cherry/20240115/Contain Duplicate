@@ -1,0 +1,24 @@
+// Array 
+
+class Solution {
+public:
+    bool containsDuplicate(vector<int>& nums) {
+        unordered_set<int> seen;
+
+        // 각 요소 확인 
+        for(int num : nums)
+        {
+            // 중복
+            if(seen.find(num)!=seen.end())
+            {
+                return true;
+            }
+
+            // 현재 요소 추가 
+            seen.insert(num);
+        }
+        
+        // 못찾았으면 false
+        return false;
+    }
+};
