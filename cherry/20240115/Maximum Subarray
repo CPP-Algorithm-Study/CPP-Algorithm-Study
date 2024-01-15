@@ -1,0 +1,23 @@
+// dynamic programming 
+
+class Solution {
+public:
+    int maxSubArray(vector<int>& nums) {
+        
+        // initialize
+        int maxSum = nums[0];
+        int currentSum = nums[0];
+
+        // 첫번째요소는 위에서 사용 
+        for(int i=1;i<nums.size();i++)
+        {
+            // calculate 
+            currentSum = max(nums[i],currentSum+nums[i]);
+            
+            // update 
+            maxSum = max(maxSum,currentSum);
+        }
+
+        return maxSum;
+    }
+};
