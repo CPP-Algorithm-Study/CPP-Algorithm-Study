@@ -1,0 +1,44 @@
+// string 
+// unordered_map 
+// -> times == even -> canb palindrome
+
+
+class Solution {
+public:
+    int longestPalindrome(string s) {
+        
+        unordered_map<char,int> count;
+        
+        // count char
+        for(char c : s)
+        {
+            count[c]++;
+        }
+
+        int len = 0;
+        bool hasOdd = false; // check if odd exist
+
+        for(auto elem : count)
+        {
+            // even -> add to length
+            if(elem.second%2 == 0)
+            {
+                len += elem.second;
+            }
+
+            // odd -> odd flag = true
+            else 
+            {
+                hasOdd = true;
+                len += elem.second-1;
+            }
+        }
+
+        if(hasOdd)
+        {
+            len++; // 최소 한개의 홀수 문자가 있으면 중앙에 배치 가능 
+        }
+
+        return len;
+    }
+};  
