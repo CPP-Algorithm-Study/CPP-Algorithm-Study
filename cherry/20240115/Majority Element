@@ -1,0 +1,27 @@
+// Array 
+
+class Solution {
+public:
+    int majorityElement(vector<int>& nums) {
+        
+        // set initial value 
+        int elem = nums[0]; // 과반수요소 후보 
+        // declare 
+        int cnt = 0;
+
+        for(int i=0;i<nums.size();i++)
+        {
+            // set inital value of cnt 
+            if(cnt == 0)
+            {
+                elem = nums[i]; // 과반수요소 후보 변경 
+                // (더 이상 이전 요소가 과반수를 차지하지 않는다)
+            }
+
+            cnt += (elem == nums[i]) ? 1:-1; // 같으면 +1 or 다르면 -1 상쇄 
+        }
+
+        // 과반수 요소는 다른 모든 elem 등장횟수를 상쇄시키고도 남을만큼 충분히 많이 등장  
+        return elem;
+    }
+};
