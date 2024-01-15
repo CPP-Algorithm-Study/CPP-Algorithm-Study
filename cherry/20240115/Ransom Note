@@ -1,0 +1,44 @@
+// Hash Table 
+
+class Solution {
+public:
+    bool canConstruct(string ransomNote, string magazine) {
+        
+        unordered_map<char,int> hashTable;
+
+        // magazine
+        for(char c : magazine)
+        {
+            // if not exist yet
+            if(hashTable.find(c) == hashTable.end())
+            {
+                hashTable[c] = 1;
+            }
+
+            // if exist
+            else
+            {
+                hashTable[c]++;
+            }
+        }
+
+        // ransom note
+        for(char c : ransomNote)
+        {
+            // if exist && still > 0
+            if(hashTable.find(c) != hashTable.end() && hashTable[c]>0)
+            {
+                hashTable[c]--;
+            }
+
+            // if not exist
+            else
+            {
+                return false;
+            }
+        }
+
+        // default
+        return true;
+    }
+};
