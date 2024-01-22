@@ -1,0 +1,38 @@
+// Array 
+
+// insert newIntervals into intervals (still sorted)
+class Solution {
+public:
+    vector<vector<int>> insert(vector<vector<int>>& intervals, vector<int>& newInterval) {
+        
+        vector<vector<int>> result;
+        int i = 0;
+        int n = intervals.size();
+
+        // step1 : 모든 non-overlapping 간격을 결과에 추가 
+        while(i<n && intervals[i][1] < newInterval[0])
+        {
+            result.push_back(intervals[i++]);
+        }
+
+        // step2 : 겹치는 간격을 병합
+        while(i<n && intervals[i][0] <= newInterval[1])
+        {
+            newInterval[0] = min(newInterval[0],intervals[i][0]);
+            newInterval[1] = max(newInterval[1],intervals[i][1]);
+            i++;
+        }
+
+        // 병합된 간격 추가 
+        result.push_back(newInterval);
+
+        // step3 : 나머지 간격 추가 
+        while(i<n)
+        {
+            result.push_back(intervals[i++]);
+        }
+
+        return result;
+
+    }
+};
