@@ -1,0 +1,39 @@
+// Heap
+
+class Solution {
+public:
+    vector<vector<int>> kClosest(vector<vector<int>>& points, int k) {
+        
+        // 거리와 포인트 인덱스를 저장하기 위한 최소 힙
+        auto comp = [&points](const pair<int,int>& a, const pair<int,int>& b)
+        { // 컴파일러에 변수 타입 추론 지시 
+            return a.first > b.first; // 객체 비교 후 a 원소 더 크면 true 반환 
+        };
+
+        /*
+        * points 벡터를 람다함수 내에서 참조로 사용할 수 있게 함 
+        * [capture list](parameter list) -> return type {function body} 형태 
+        */   
+
+        priority_queue<pair<int,int>, vector<pair<int,int>>, decltype(comp)> minHeap(comp);
+
+        // 모든 점에 대해 원점으로부터의 거리 계산 후 힙에 삽입 
+        for(int i=0;i<points.size();i++)
+        {
+            int dist = points[i][0] * points[i][0] + points[i][1] * points[i][1]; // 거리의 제곱 
+            minHeap.emplace(dist,i); // 거리와 인덱스를 힙에 삽입 
+        }
+
+        // 결과 벡터
+        vector<vector<int>> result;
+        while(k-->0 && !minHeap.empty())
+        {
+            // 힙의 top 에 있는 인덱스에 해당하는 점을 결과에 추가
+            result.push_back(points[minHeap.top().second]); 
+            minHeap.pop(); // 처리된 점 제거 
+        }
+
+        return result;
+
+    }
+};
