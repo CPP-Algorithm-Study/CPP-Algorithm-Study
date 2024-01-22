@@ -1,0 +1,27 @@
+// String
+// longest substring without repeating characters
+
+class Solution {
+public:
+    int lengthOfLongestSubstring(string s) {
+        unordered_map<char,int> charIndexMap; // 문자의 마지막 위치를 저장
+        int maxLength = 0; // 최대 부분 문자열 길이 
+        int start = 0; // 윈도우의 시작 위치
+
+        for(int end=0;end<s.length();end++)
+        {
+            char currentChar = s[end];
+            // 만약 현재 문자가 이미 Map 에 있고, 윈도우의 시작 이후에 위치한다면 
+            if(charIndexMap.find(currentChar)!=charIndexMap.end() 
+                    && charIndexMap[currentChar]>=start)
+            {
+                start = charIndexMap[currentChar] + 1; // 윈도우의 시작을 중복문자의 다음위치로 이동 
+            }
+
+            charIndexMap[currentChar] = end; // 현재 문자의 위치를 업데이트
+            maxLength = max(maxLength, end-start+1); // 최대 길이 업데이트 
+        }
+
+        return maxLength; // 최대길이 반환 
+    }
+};
