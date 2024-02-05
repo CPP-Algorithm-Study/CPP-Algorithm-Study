@@ -1,0 +1,26 @@
+// dynamic programming 
+
+class Solution {
+public:
+    int coinChange(vector<int>& coins, int amount) {
+        // dp[i] -> 금액 i를 만들기 위한 최소 동전 개수 
+        vector<int> dp(amount+1,amount+1);
+        dp[0] = 0; // 금액이 0일 때는 동전이 필요 없으므로 0 
+
+        // 모든 금액에 대해 반복
+        for(int i=1;i<=amount;i++)
+        {
+            // 각 동전을 순회하며 dp 값 갱신
+            for(int coin:coins)
+            {
+                if(i-coin>=0)
+                {
+                    dp[i] = min(dp[i],dp[i-coin]+1);
+                }
+            }
+        }
+
+        // amount 를 만들 수 없는 경우 -1 반환
+        return dp[amount] > amount ? -1 : dp[amount];
+    }
+};
