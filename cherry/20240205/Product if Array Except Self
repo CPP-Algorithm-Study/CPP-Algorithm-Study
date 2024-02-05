@@ -1,0 +1,25 @@
+// Array 
+class Solution {
+public:
+    vector<int> productExceptSelf(vector<int>& nums) {
+        
+        int n = nums.size();
+        vector<int> answer(n,1); // 모든 위치 1로 초기화 
+
+        int leftProduct = 1;
+        for(int i=0;i<n;i++)
+        {
+            answer[i] = leftProduct; // 현재 위치까지의 왼쪽 요소들 곱 
+            leftProduct *= nums[i]; // 다음 위치를 위해 왼쪽 요소들의 곱을 업데이트
+        }
+
+        int rightProduct = 1;
+        for(int i=n-1;i>=0;i--)
+        {
+            answer[i] *= rightProduct; // 왼쪽 요소들의 곱에 오른쪽 요소들의 곱을 곱함
+            rightProduct *= nums[i]; // 다음 위치를 위해 오른쪽 요소들의 곱을 업데이트
+        }
+
+        return answer;
+    }
+};
