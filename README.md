@@ -1,6 +1,6 @@
 # C++을 이용한 Algorithm Study
 ### 💻 참여자
-[김서연](https://github.com/flowersayo)|[이채리](https://github.com/official-Cherry)|[신수정](https://github.com/chock-cho)|[한다현](https://github.com/ekgus9701)|
+[김서연](https://github.com/flowersayo)|[이채리](https://github.com/official-Cherry)|[신수정](https://github.com/chock-cho)|[000](https://github.com/ekgus9701)|
 |:---:|:---:|:---:|:---:|
 ![image](https://github.com/CPP-Algorithm-Study/CPP-Algorithm-Study/assets/52192706/51d614e3-5465-48fc-a763-bfb1e7e44b03) |![채리](https://github.com/CPP-Algorithm-Study/CPP-Algorithm-Study/assets/52192706/172738c5-59c4-4b8a-9a5f-9db7dc22c522) |![촉초](https://github.com/CPP-Algorithm-Study/CPP-Algorithm-Study/assets/52192706/158565cf-d391-4228-9cd3-4293cd1d261e)|![52192706](https://github.com/CPP-Algorithm-Study/CPP-Algorithm-Study/assets/52192706/dd383f39-f28d-4c20-a38a-da970070d25e)|
 ### ✅ 진행 방식
